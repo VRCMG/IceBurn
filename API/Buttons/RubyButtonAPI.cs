@@ -244,7 +244,7 @@ namespace IceBurn.API
 
         public void initButton(int btnXLocation, int btnYLocation, String btnText, String btnToolTip, Nullable<Color> btnBackgroundColor = null, Nullable<Color> btnTextColor = null, Nullable<Color> backbtnBackgroundColor = null, Nullable<Color> backbtnTextColor = null)
         {
-            Transform menu = UnityEngine.Object.Instantiate<Transform>(QuickMenuStuff.GetQuickMenuInstance().transform.Find("CameraMenu"), QuickMenuStuff.GetQuickMenuInstance().transform);
+            Transform menu = UnityEngine.Object.Instantiate(QuickMenuStuff.GetQuickMenuInstance().transform.Find("CameraMenu"), QuickMenuStuff.GetQuickMenuInstance().transform);
             menuName = "CustomMenu" + btnQMLoc + "_" + btnXLocation + "_" + btnYLocation;
             menu.name = menuName;
 
@@ -253,8 +253,8 @@ namespace IceBurn.API
             IEnumerator enumerator = menu.transform.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                object obj = enumerator.Current;
-                Transform btnEnum = (Transform)obj;
+                Il2CppSystem.Object obj = enumerator.Current;
+                Transform btnEnum = obj.Cast<Transform>();
                 if (btnEnum != null)
                 {
                     UnityEngine.Object.Destroy(btnEnum.gameObject);
