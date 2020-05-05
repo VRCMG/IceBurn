@@ -18,15 +18,12 @@ namespace IceBurn.Mods
         }
         public virtual void OnStart()
         {
-            new Thread(() =>
+           /* new Thread(() =>
             {
-                for(; ;)
-                {
                     Thread.Sleep(15000);
                     OnUpdate();
-                }
             })
-            { IsBackground = true }.Start();
+            { IsBackground = true }.Start();*/
         }
         public virtual void OnUpdate()
         {

@@ -9,6 +9,7 @@ using UnityEngine;
 using VRC.Core;
 using IceBurn.Mods.Fav.Config;
 using IceBurnIceBurn.Mods.Joke;
+using IceBurn.Mods.Buttons;
 
 namespace IceBurn
 {
@@ -33,16 +34,25 @@ namespace IceBurn
             Console.WriteLine("Alt + F5 - ShutDown This Shit");
             Console.WriteLine("===================================");
 			Config.LoadConfig();
-		}
+		
+	}
 
         public override void OnUpdate()
         {
-            Modules.Find(x => x.Name == "Input Handler").OnUpdate();
-        }
+			foreach (var item in Modules)
+			{
+				item.OnUpdate();
+			}
+		}
 
 		public override void VRChat_OnUiManagerInit()
 		{
 			//Modules.Add(new UIButtons());
+
+			foreach (var item in Modules)
+			{
+				item.OnStart();
+			}
 
 			if (Config.CFG.Custom)
 			{
