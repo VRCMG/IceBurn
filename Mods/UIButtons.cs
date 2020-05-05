@@ -24,6 +24,11 @@ namespace IceBurn.Mods.Buttons
         public UIButtons() : base() {}
         public override void OnStart() 
         {
+            var testBtn = new QMSingleButton("ShortcutMenu", 0, 0, "BAN!", new Action(() =>
+            {
+                Console.WriteLine("Hello World EBAT");
+            }), "BAN NAXUY!");
+
             try
             {
                 if (Buttons.Count() == 0)
@@ -41,14 +46,7 @@ namespace IceBurn.Mods.Buttons
                         }));
 
                         Buttons.Add(TeleportToPlayerI.gameObject);
-
-                        /*var testBtn = new QMSingleButton(btnQMLoc, btnXLocation, btnYLocation, btnText, new Action(() => 
-                        {
-                            QuickMenuStuff.ShowQuickmenuPage(menuName);
-                        }
-                        ), btnToolTip, btnBackgroundColor, btnTextColor);*/
                     }
-
                     if (parent != null)
                     {
                         var Flightbutton = ButtonAPI.CreateButton(ButtonType.Toggle, "Flight", "Enable/Disable Flight", Color.white, Color.red, -1, 0, parent, new Action(() =>
