@@ -95,7 +95,7 @@ namespace IceBurn.Mods.Fav
                 value.field_Private_Dictionary_2_String_ApiAvatar_0.Add(t, null);
             }
             value.specificListIds = list.ToArray();
-            value.Method_Protected_Void_Int32_0(0);
+            //value.Method_Protected_Void_Int32_0(0);
         }
     }
     public class AvatarListApi
