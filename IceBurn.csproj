@@ -98,7 +98,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="VRCSDKBase">
-      <HintPath>D:\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\VRCSDKBase.dll</HintPath>
+      <HintPath>G:\SteamGames\steamapps\common\VRChat\MelonLoader\Managed\VRCSDKBase.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
