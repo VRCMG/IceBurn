@@ -9,7 +9,7 @@ using UnityEngine;
 using VRC.Core;
 using IceBurn.Mods.Fav.Config;
 using IceBurnIceBurn.Mods.Joke;
-using IceBurn.Mods.Buttons;
+//using IceBurn.Mods.Buttons;
 
 namespace IceBurn
 {

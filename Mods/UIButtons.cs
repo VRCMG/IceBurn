@@ -26,7 +26,7 @@ namespace IceBurn.Mods.Buttons
         {
 			Console.WriteLine("123");
             var testBtn = new QMNestedButton("ShortcutMenu", 0, 0, "lol", "BAN NAXUY!");
-			var testBtn2 = new QMSingleButton(testBtn, 0, 0, "BAN!",new Action(() => Console.WriteLine("ssss")), "BAN NAXUY!");
+			var testBtn2 = new QMSingleButton(testBtn, 0, 1, "BAN!",new Action(() => Console.WriteLine("ssss")), "BAN NAXUY!");
 
 			try
             {
