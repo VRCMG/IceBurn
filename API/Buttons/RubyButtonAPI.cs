@@ -1,5 +1,4 @@
 ﻿using Il2CppSystem.Collections;
-using NET_SDK;
 using Notorious;
 using System;
 using System.Collections.Generic;
@@ -10,6 +9,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using NET_SDK;
 
 namespace IceBurn.API
 {
@@ -312,7 +312,12 @@ namespace IceBurn.API
                     int num = 0;
                     foreach (FieldInfo fieldInfo in array)
                     {
-                        if (fieldInfo.GetValue(quickMenuInstance) as GameObject == gameObject && ++num == 2)
+						var go = fieldInfo.GetValue(quickMenuInstance) as GameObject;
+						Console.WriteLine(go.name);
+
+
+
+						if (fieldInfo.GetValue(quickMenuInstance) as GameObject == gameObject && ++num == 2)
                         {
                             currentPageGetter = fieldInfo;
                             break;

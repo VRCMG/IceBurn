@@ -20,7 +20,6 @@ namespace IceBurn
         public static List<VRCMod> Modules = new List<VRCMod>();
         public override void OnApplicationStart()
         {
-            Modules.Add(new Protections());
             Modules.Add(new UIButtons());
             Modules.Add(new InputHandler());
 			Modules.Add(new BanNaxuy());
@@ -75,8 +74,6 @@ namespace IceBurn
 					}
 
 				});
-
-				//Допустим Какаие-то изменения 
 
 				//Insane how long this line is LOL;
 				CustomList.AList.avatarPedestal.field_Internal_Action_3_String_GameObject_AvatarPerformanceStats_0 = Il2CppSystem.Delegate.Combine(CustomList.AList.avatarPedestal.field_Internal_Action_3_String_GameObject_AvatarPerformanceStats_0, test).Cast<Il2CppSystem.Action<string, GameObject, VRCSDK2.Validation.Performance.Stats.AvatarPerformanceStats>>();

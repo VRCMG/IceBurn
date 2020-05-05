@@ -141,11 +141,9 @@ namespace Notorious.API
             var quickMenu = Wrappers.GetQuickMenu();
             Transform menu = InstantiateGameobject("menu");
             menu.name = $"MENU_INDEX_{x_pos}_{y_pos}";
-            Console.WriteLine(menu.name);
 
             CreateButton(ButtonType.Default, text, tooltip, textColor, backgroundColor, x_pos, y_pos, parent, new Action(() =>
             {
-                Console.WriteLine("NestedClick!" + menu.name);
                 ButtonAPI.ShowCustomMenu(menu.name);
             }));
 

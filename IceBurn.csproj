@@ -41,7 +41,6 @@
     <Compile Include="Mods\Fav\SavedAvatar.cs" />
     <Compile Include="Mods\InputHandler.cs" />
     <Compile Include="Mods\Joke\BanNaxuy.cs" />
-    <Compile Include="Mods\Protections.cs" />
     <Compile Include="Mods\UIButtons.cs" />
     <Compile Include="Mods\VRCMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

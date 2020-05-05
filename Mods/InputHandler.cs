@@ -30,7 +30,7 @@ namespace IceBurn.Mods
 
         public override void OnStart()
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            //Console.ForegroundColor = ConsoleColor.Magenta;
         }
 
         private static UserInteractMenu CachedUserInteract { get; set; }
