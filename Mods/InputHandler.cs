@@ -3,7 +3,7 @@ using MelonLoader;
 using NET_SDK;
 using Notorious;
 using IceBurn.Utils;
-//using IceBurn.Mods.Buttons;
+using IceBurn.Mods.Buttons;
 using System;
 using System.Diagnostics;
 using System.Collections.Generic;

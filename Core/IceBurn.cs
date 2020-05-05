@@ -1,5 +1,5 @@
 ﻿using IceBurn.Mods.Fav;
-//using IceBurn.Mods.Buttons;
+using IceBurn.Mods.Buttons;
 using IceBurn.Mods;
 using MelonLoader;
 using System;
