@@ -308,7 +308,7 @@ namespace IceBurn.API
                 if (currentPageGetter == null)
                 {
                     GameObject gameObject = quickMenuInstance.transform.Find("ShortcutMenu").gameObject;
-                    FieldInfo[] array = (from fi in typeof(QuickMenu).GetFields(BindingFlags.Instance | BindingFlags.NonPublic) where fi.FieldType == typeof(GameObject) select fi).ToArray<FieldInfo>();
+                    FieldInfo[] array = (from fi in typeof(QuickMenu).GetFields(BindingFlags.Instance | BindingFlags.Public) where fi.FieldType == typeof(GameObject) select fi).ToArray<FieldInfo>();
                     int num = 0;
                     foreach (FieldInfo fieldInfo in array)
                     {
@@ -323,7 +323,7 @@ namespace IceBurn.API
                 if (currentPageGetter == null)
                 {
                     GameObject gameObject = quickMenuInstance.transform.Find("UserInteractMenu").gameObject;
-                    FieldInfo[] array = (from fi in typeof(QuickMenu).GetFields(BindingFlags.Instance | BindingFlags.NonPublic) where fi.FieldType == typeof(GameObject) select fi).ToArray<FieldInfo>();
+                    FieldInfo[] array = (from fi in typeof(QuickMenu).GetFields(BindingFlags.Instance | BindingFlags.Public) where fi.FieldType == typeof(GameObject) select fi).ToArray<FieldInfo>();
                     int num = 0;
                     foreach (FieldInfo fieldInfo in array)
                     {
@@ -349,7 +349,7 @@ namespace IceBurn.API
             GetQuickMenuInstance().transform.Find("QuickMenu_NewElements/_InfoBar").gameObject.SetActive(false);
             if (quickmenuContextualDisplayGetter != null)
             {
-                quickmenuContextualDisplayGetter = typeof(QuickMenu).GetFields(BindingFlags.Instance | BindingFlags.NonPublic).FirstOrDefault((FieldInfo fi) => fi.FieldType == typeof(QuickMenuContextualDisplay));
+                quickmenuContextualDisplayGetter = typeof(QuickMenu).GetFields(BindingFlags.Instance | BindingFlags.Public).FirstOrDefault((FieldInfo fi) => fi.FieldType == typeof(QuickMenuContextualDisplay));
             }
             FieldInfo fieldInfo2 = quickmenuContextualDisplayGetter;
             QuickMenuContextualDisplay quickMenuContextualDisplay = ((fieldInfo2 != null) ? fieldInfo2.GetValue(quickMenuInstance) : null) as QuickMenuContextualDisplay;
