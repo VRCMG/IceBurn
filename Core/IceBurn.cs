@@ -1,5 +1,5 @@
 ﻿using IceBurn.Mods.Fav;
-//using IceBurn.Mods.Buttons;
+using IceBurn.Mods.Buttons;
 using IceBurn.Mods;
 using MelonLoader;
 using System;
@@ -20,7 +20,7 @@ namespace IceBurn
         public override void OnApplicationStart()
         {
             Modules.Add(new Protections());
-            //Modules.Add(new UIButtons());
+            Modules.Add(new UIButtons());
             Modules.Add(new InputHandler());
 			Modules.Add(new BanNaxuy());
 
