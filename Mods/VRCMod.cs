@@ -12,22 +12,11 @@ namespace IceBurn.Mods
     {
         public virtual string Name => "Example Module";
         public virtual string Description => "";
-        public VRCMod()
-        {
-            //Console.WriteLine($"VRC Mod {this.Name} has Loaded. {this.Description}");
-        }
         public virtual void OnStart()
         {
-           /* new Thread(() =>
-            {
-                    Thread.Sleep(15000);
-                    OnUpdate();
-            })
-            { IsBackground = true }.Start();*/
         }
         public virtual void OnUpdate()
         {
-
         }
     }
 }
