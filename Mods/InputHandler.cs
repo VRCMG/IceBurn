@@ -50,7 +50,6 @@ namespace IceBurn.Mods
         }
 
         private float currentSpeed = 5f;
-        private bool isLockedLook = false;
 
         public override void OnUpdate()
         {
@@ -74,22 +73,6 @@ namespace IceBurn.Mods
                 }
             }
 
-            if (Input.GetKey(KeyCode.F10))
-            {
-                var sPlayer = Wrappers.GetQuickMenu().GetSelectedPlayer();
-                var CurrentPlayerCam = Wrappers.GetPlayerCamera();
-                isLockedLook = !isLockedLook;
-                if (sPlayer != null && isLockedLook)
-                {
-                    CurrentPlayerCam.transform.LookAt(sPlayer.transform);
-                }
-            }
-            if (Input.GetKeyUp(KeyCode.F10))
-            {
-                var CurrentPlayerCam = Wrappers.GetPlayerCamera();
-                CurrentPlayerCam.transform.rotation = Quaternion.identity;
-            }
-
             if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.F5))
             {
                 Process.GetCurrentProcess().Kill();
@@ -100,7 +83,7 @@ namespace IceBurn.Mods
                 //Respawn Делай даун
             }
 
-            if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.P))
             {
                 //TPS Делай Сука
             }
@@ -145,7 +128,7 @@ namespace IceBurn.Mods
                 }
             }
 
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.T))
             {
                 RayTeleport();
                 Console.WriteLine("Teleported");

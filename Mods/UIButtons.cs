@@ -30,17 +30,17 @@ namespace IceBurn.Mods.Buttons
             //var testBtn = new QMNestedButton("ShortcutMenu", 0, 0, "lol", "BAN NAXUY!");
             //var testBtn2 = new QMSingleButton(testBtn, 0, 1, "BAN!",new Action(() => Console.WriteLine("ssss")), "BAN NAXUY!");
 
-            var DoneteButton = new QMSingleButton("ShortcutMenu", 0, 0,"Donate", new Action(() =>
+            var DoneteButton = new QMSingleButton("UIElementsMenu", 0, 0,"Donate", new Action(() =>
             {
                 Console.WriteLine("Thanks (^-^)");
                 Process.Start("https://www.donationalerts.com/r/ice_fox");
             }), "Support Author Please (^-^)");
 
-            var DiscordButton = new QMSingleButton("ShortcutMenu", 0, 1, "Join us", new Action(() =>
+            var DiscordButton = new QMSingleButton("UIElementsMenu", 0, 1, "Join us", new Action(() =>
             {
                 Console.WriteLine("Welcome");
-                Process.Start("https://discord.gg/sBWB2AX");
-            }), "Support Author Please (^-^)");
+                Process.Start("https://discord.gg/kNDRN7k");
+            }), "Join us in discord server");
 
             var Flightbutton = new QMToggleButton("UIElementsMenu", 3, 0,
             "Fly On", new Action(() => 
