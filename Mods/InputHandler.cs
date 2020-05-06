@@ -117,7 +117,7 @@ namespace IceBurn.Mods
                 {
                     GlobalUtils.ToggleColliders(false);
                 }
-                //UIButtons.ToggleUIButton(0, GlobalUtils.DirectionalFlight);
+                //UIButtons.ToggleUIButton(0, GlobalUtils.SelectedPlayerESP);
                 Console.WriteLine($"Flight has been {(GlobalUtils.DirectionalFlight ? "Enabled" : "Disabled")}.");
             }
             if (Input.GetKeyDown(KeyCode.O))

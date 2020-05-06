@@ -24,11 +24,167 @@ namespace IceBurn.Mods.Buttons
         public UIButtons() : base() {}
         public override void OnStart() 
         {
-			Console.WriteLine("123");
-            var testBtn = new QMNestedButton("ShortcutMenu", 0, 0, "lol", "BAN NAXUY!");
-			var testBtn2 = new QMSingleButton(testBtn, 0, 1, "BAN!",new Action(() => Console.WriteLine("ssss")), "BAN NAXUY!");
+            //var testBtn = new QMNestedButton("ShortcutMenu", 0, 0, "lol", "BAN NAXUY!");
+            //var testBtn2 = new QMSingleButton(testBtn, 0, 1, "BAN!",new Action(() => Console.WriteLine("ssss")), "BAN NAXUY!");
 
-			try
+            var DoneteButton = new QMSingleButton("ShortcutMenu", 0, 0,"Donate", new Action(() =>
+            {
+                Console.WriteLine("Thanks (^-^)");
+                Process.Start("https://www.donationalerts.com/r/ice_fox");
+            }), "Support Author Please (^-^)");
+
+            var DiscordButton = new QMSingleButton("ShortcutMenu", 0, 1, "Join us", new Action(() =>
+            {
+                Console.WriteLine("Welcome");
+                Process.Start("https://discord.gg/sBWB2AX");
+            }), "Support Author Please (^-^)");
+
+            var Flightbutton = new QMToggleButton("UIElementsMenu", 3, 0,
+            "Fly On", new Action(() => 
+            {
+                GlobalUtils.DirectionalFlight = true;
+                Physics.gravity = GlobalUtils.DirectionalFlight ? Vector3.zero : GlobalUtils.Grav;
+                GlobalUtils.ToggleColliders(false);
+                Console.WriteLine($"Flight has been enabled.");
+            }), "Fly Off", new Action(() => 
+            {
+                GlobalUtils.DirectionalFlight = false;
+                Physics.gravity = GlobalUtils.DirectionalFlight ? Vector3.zero : GlobalUtils.Grav;
+                GlobalUtils.ToggleColliders(true);
+                Console.WriteLine($"Flight has been disabled.");
+            }), "Enable or Disable Flight");
+
+            var ESPbutton = new QMToggleButton("UIElementsMenu", 4, 0,
+            "ESP On", new Action(() =>
+            {
+                GlobalUtils.SelectedPlayerESP = true;
+                Console.WriteLine($"Selected ESP has been enabled.");
+
+                GameObject[] array = GameObject.FindGameObjectsWithTag("Player");
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i].transform.Find("SelectRegion"))
+                    {
+                        array[i].transform.Find("SelectRegion").GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Color.magenta);
+                        HighlightsFX.prop_HighlightsFX_0.EnableOutline(array[i].transform.Find("SelectRegion").GetComponent<Renderer>(), GlobalUtils.SelectedPlayerESP);
+                    }
+                }
+
+                foreach (VRC_Pickup pickup in Resources.FindObjectsOfTypeAll<VRC_Pickup>())
+                {
+                    if (pickup.gameObject.transform.Find("SelectRegion"))
+                    {
+                        pickup.gameObject.transform.Find("SelectRegion").GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Color.magenta);
+                        Wrappers.GetHighlightsFX().EnableOutline(pickup.gameObject.transform.Find("SelectRegion").GetComponent<Renderer>(), GlobalUtils.SelectedPlayerESP);
+                    }
+                }
+            }), "ESP Off", new Action(() =>
+            {
+                GlobalUtils.SelectedPlayerESP = false;
+                Console.WriteLine($"Selected ESP has been disabled");
+
+                GameObject[] array = GameObject.FindGameObjectsWithTag("Player");
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i].transform.Find("SelectRegion"))
+                    {
+                        array[i].transform.Find("SelectRegion").GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Color.magenta);
+                        HighlightsFX.prop_HighlightsFX_0.EnableOutline(array[i].transform.Find("SelectRegion").GetComponent<Renderer>(), GlobalUtils.SelectedPlayerESP);
+                    }
+                }
+
+                foreach (VRC_Pickup pickup in Resources.FindObjectsOfTypeAll<VRC_Pickup>())
+                {
+                    if (pickup.gameObject.transform.Find("SelectRegion"))
+                    {
+                        pickup.gameObject.transform.Find("SelectRegion").GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Color.magenta);
+                        Wrappers.GetHighlightsFX().EnableOutline(pickup.gameObject.transform.Find("SelectRegion").GetComponent<Renderer>(), GlobalUtils.SelectedPlayerESP);
+                    }
+                }
+            }), "Enable or Disable ESP");
+
+            var JumpButton = new QMToggleButton("UIElementsMenu", 1, 1,
+            "Jump On", new Action(() => 
+            {
+                if (PlayerWrappers.GetCurrentPlayer() != null)
+                {
+                    if (PlayerWrappers.GetCurrentPlayer().GetComponent<PlayerModComponentJump>() == null)
+                    {
+                        PlayerWrappers.GetCurrentPlayer().gameObject.AddComponent<PlayerModComponentJump>();
+                    }
+                }
+            }), "Jump Off", new Action(() => 
+            {
+                if (PlayerWrappers.GetCurrentPlayer() != null)
+                {
+                    if (PlayerWrappers.GetCurrentPlayer().GetComponent<PlayerModComponentJump>() != null)
+                    {
+                        UnityEngine.GameObject.Destroy(PlayerWrappers.GetCurrentPlayer().GetComponent<PlayerModComponentJump>());
+                    }
+                }
+            }), "Enable or Disable Jump");
+
+            var ForceQuitButton = new QMSingleButton("UIElementsMenu", 5, 2, "Force Quit",new Action(() =>
+            {
+                Process.GetCurrentProcess().Kill();
+            }), "Quit Game");
+
+            var CloneAvatarButton = new QMSingleButton("UserInteractMenu", 4, 2, "Force Clone", new Action(() =>
+            {
+                Console.WriteLine("Cloned Avatar");
+                var avi = Wrappers.GetQuickMenu().GetSelectedPlayer().field_Internal_VRCPlayer_0.prop_ApiAvatar_0;
+
+                if (avi.releaseStatus != "private")
+                {
+                    new PageAvatar
+                    {
+                        avatar = new SimpleAvatarPedestal
+                        {
+                            field_Internal_ApiAvatar_0 = new ApiAvatar
+                            {
+                                id = avi.id
+                            }
+                        }
+                    }.ChangeToSelectedAvatar();
+                }
+            }), "Clone Avatar");
+
+            var DownloadAvatarButton = new QMSingleButton("UserInteractMenu", 4, 3, "Download VRCA", new Action(() =>
+            {
+                Console.WriteLine("Downloading Avatar...");
+                var avi = Wrappers.GetQuickMenu().GetSelectedPlayer().field_Internal_VRCPlayer_0.prop_ApiAvatar_0;
+                Process.Start("https://api.vrchat.cloud/api/1/file/" + avi.id);
+            }), "Clone Avatar");
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (GlobalUtils.DirectionalFlight)
+                {
+                    Flightbutton.btnOn.SetActive(true);
+                    Flightbutton.btnOff.SetActive(false);
+                }
+                else
+                {
+                    Flightbutton.btnOn.SetActive(false);
+                    Flightbutton.btnOff.SetActive(true);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                if (GlobalUtils.SelectedPlayerESP)
+                {
+                    ESPbutton.btnOn.SetActive(true);
+                    ESPbutton.btnOff.SetActive(false);
+                }
+                else
+                {
+                    ESPbutton.btnOn.SetActive(false);
+                    ESPbutton.btnOff.SetActive(true);
+                }
+            }  //не имеет смысла но пусть будет ._.
+
+            /*try
             {
                 if (Buttons.Count() == 0)
                 {
@@ -187,7 +343,7 @@ namespace IceBurn.Mods.Buttons
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception) { }*/
         }
         public static void ToggleUIButton(int Index, bool state)
         {

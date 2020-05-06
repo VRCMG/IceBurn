@@ -24,7 +24,7 @@ namespace IceBurn.Mods.Fav
                     value.field_Private_Dictionary_2_String_ApiAvatar_0.Add(t, null);
             }
             value.specificListIds = list.ToArray();
-            value.Method_Protected_Void_Int32_0(0);
+            //value.Method_Protected_Void_Int32_0(0);
         }
 
         public static void FirstLoad(this UiAvatarList value, List<SavedAvi> list)
@@ -58,7 +58,7 @@ namespace IceBurn.Mods.Fav
                 UpdateAvatars();
             }
             value.specificListIds = list.Select(x => x.AvatarID).ToArray();
-            value.Method_Protected_Void_Int32_0(0);
+            //value.Method_Protected_Void_Int32_0(0);
 
         }
 

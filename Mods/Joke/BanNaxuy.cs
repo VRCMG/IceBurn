@@ -14,6 +14,9 @@ namespace IceBurnIceBurn.Mods.Joke
     {
         public BanNaxuy() : base() { }
 
-        //GameObject BS = Instantiate(Component, Wrappers.GetPlayerCamera().transform.position, Quaternion.identity);
+        public override void OnStart()
+        {
+            //PlayerWrappers.GetCurrentPlayer().gameObject.AddComponent<ONSPAudioSource>();
+        }
     }
 }

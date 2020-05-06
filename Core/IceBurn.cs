@@ -3,6 +3,7 @@ using IceBurn.Mods.Buttons;
 using IceBurn.Mods;
 using MelonLoader;
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -102,6 +103,14 @@ namespace IceBurn
 							CustomList.ListTitle.text = Config.CFG.CustomName + " / " + Config.DAvatars.Count;
 						}
 					}
+				});
+
+				FavoriteButton = AviPButton.Create("Download VRCA", 320f, 9.6f);
+				FavoriteButton.SetAction(() =>
+				{
+					Console.WriteLine("Downloading Avatar...");
+					var avatar = CustomList.AList.avatarPedestal.field_Internal_ApiAvatar_0;
+					Process.Start("https://api.vrchat.cloud/api/1/file/" + avatar.id);
 				});
 
 				//Author Button
