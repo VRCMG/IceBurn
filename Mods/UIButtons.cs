@@ -156,7 +156,8 @@ namespace IceBurn.Mods.Buttons
             {
                 Console.WriteLine("Downloading Avatar...");
                 var avatar = Wrappers.GetQuickMenu().GetSelectedPlayer().field_Internal_VRCPlayer_0.prop_ApiAvatar_0;
-                Process.Start("https://api.vrchat.cloud/api/1/file/" + avatar.id);
+                Process.Start(avatar.assetUrl);
+                Console.WriteLine(avatar.assetUrl);
             }), "Clone Avatar");
 
             /*var CloneAvatarButton2 = new QMSingleButton("/UserInterface/MenuContent/Screens/Social", 0, 0, "Download VRCA", new Action(() =>

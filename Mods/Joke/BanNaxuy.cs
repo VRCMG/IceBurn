@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Audio;
 using VRCSDK2;
 
 namespace IceBurnIceBurn.Mods.Joke
@@ -16,7 +17,7 @@ namespace IceBurnIceBurn.Mods.Joke
 
         public override void OnStart()
         {
-            //PlayerWrappers.GetCurrentPlayer().gameObject.AddComponent<ONSPAudioSource>();
+
         }
     }
 }

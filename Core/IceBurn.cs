@@ -10,6 +10,7 @@ using UnityEngine;
 using VRC.Core;
 using IceBurn.Mods.Fav.Config;
 using IceBurnIceBurn.Mods.Joke;
+using Notorious;
 //using IceBurn.Mods.Buttons;
 
 namespace IceBurn
@@ -110,7 +111,7 @@ namespace IceBurn
 				DownloadButton.SetAction(() =>
 				{
 					var avatar = CustomList.AList.avatarPedestal.field_Internal_ApiAvatar_0;
-					Process.Start("https://api.vrchat.cloud/api/1/avatars/" + avatar.id);
+					Process.Start(avatar.assetUrl);
 				});
 
 				//Author Button
