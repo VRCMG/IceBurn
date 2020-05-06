@@ -208,4 +208,61 @@ namespace IceBurn.Mods.Fav
             Btn.onClick.AddListener(v);
         }
     }
+
+    public class DownloadAviPButton
+    {
+        private static GameObject avipbtn = null;
+        public GameObject GameObj;
+        public Button Btn;
+        public Text Title;
+
+
+        public static GameObject AviPBTN
+        {
+            get
+            {
+                if (avipbtn == null)
+                {
+                    var button = GameObject.Find("/UserInterface/MenuContent/Screens/Avatar/Favorite Button");
+                    var NewFavPageBTN = GameObject.Instantiate(button, button.transform.parent);
+                    NewFavPageBTN.GetComponent<Button>().onClick.RemoveAllListeners();
+                    NewFavPageBTN.SetActive(false);
+                    var pos = NewFavPageBTN.transform.localPosition;
+                    NewFavPageBTN.transform.localPosition = new Vector3(pos.x, pos.y + 150f);
+                    avipbtn = NewFavPageBTN;
+                }
+                return avipbtn;
+            }
+        }
+
+        public static AviPButton Create(string ButtonTitle, float x, float y, bool shownew = false)
+        {
+            var list = new AviPButton();
+            list.GameObj = GameObject.Instantiate(AviPBTN.gameObject, AviPBTN.transform.parent);
+            list.Btn = list.GameObj.GetComponentInChildren<Button>();
+            list.Btn.onClick.RemoveAllListeners();
+            var pos = list.GameObj.transform.localPosition;
+            list.GameObj.transform.localPosition = new Vector3(pos.x + x, pos.y + (80f * y));
+            list.Title = list.GameObj.GetComponentInChildren<Text>();
+            list.Title.text = ButtonTitle;
+            if (!shownew)
+            {
+                var t = list.GameObj.GetComponentsInChildren(Image.Il2CppType);
+                foreach (var pics in t)
+                {
+                    if (pics.name == "Icon_New")
+                        GameObject.DestroyImmediate(pics);
+
+                }
+            }
+            list.GameObj.SetActive(true);
+            return list;
+        }
+
+        public void SetAction(Action v)
+        {
+            Btn.onClick = new Button.ButtonClickedEvent();
+            Btn.onClick.AddListener(v);
+        }
+    }
 }

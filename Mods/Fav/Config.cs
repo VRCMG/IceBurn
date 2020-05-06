@@ -15,6 +15,7 @@ namespace IceBurn.Mods.Fav.Config
         public string CustomName = "Ice Favorite";
         public string AddFavoriteTXT = "Add";
         public string RemoveFavoriteTXT = "Remove";
+        public string DownloadTXT = "Download VRCA";
         public bool Public = true;
         public bool Custom = true;
 

@@ -18,6 +18,7 @@ namespace IceBurn
     {
         public static AvatarListApi CustomList;
         public static AviPButton FavoriteButton;
+        public static AviPButton DownloadButton;
         public static List<VRCMod> Modules = new List<VRCMod>();
         public override void OnApplicationStart()
         {
@@ -105,12 +106,11 @@ namespace IceBurn
 					}
 				});
 
-				FavoriteButton = AviPButton.Create("Download VRCA", 320f, 9.6f);
-				FavoriteButton.SetAction(() =>
+				DownloadButton = AviPButton.Create(Config.CFG.DownloadTXT, 1150f, 9.6f);
+				DownloadButton.SetAction(() =>
 				{
-					Console.WriteLine("Downloading Avatar...");
 					var avatar = CustomList.AList.avatarPedestal.field_Internal_ApiAvatar_0;
-					Process.Start("https://api.vrchat.cloud/api/1/file/" + avatar.id);
+					Process.Start("https://api.vrchat.cloud/api/1/avatars/" + avatar.id);
 				});
 
 				//Author Button

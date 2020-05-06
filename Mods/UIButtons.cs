@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
+using IceBurn.Mods.Fav;
 using UnityEngine;
 using IceBurn.Utils;
 using VRC;
@@ -17,6 +18,8 @@ namespace IceBurn.Mods.Buttons
 {
 	public class UIButtons : VRCMod
     {
+        public static AvatarListApi CustomList; //это надо
+
         public static List<GameObject> Buttons = new List<GameObject>();
         public override string Name => "UI Buttons";
         //public override string Description => "This module adds more buttons to the menu.";
@@ -152,9 +155,16 @@ namespace IceBurn.Mods.Buttons
             var DownloadAvatarButton = new QMSingleButton("UserInteractMenu", 4, 3, "Download VRCA", new Action(() =>
             {
                 Console.WriteLine("Downloading Avatar...");
-                var avi = Wrappers.GetQuickMenu().GetSelectedPlayer().field_Internal_VRCPlayer_0.prop_ApiAvatar_0;
-                Process.Start("https://api.vrchat.cloud/api/1/file/" + avi.id);
+                var avatar = Wrappers.GetQuickMenu().GetSelectedPlayer().field_Internal_VRCPlayer_0.prop_ApiAvatar_0;
+                Process.Start("https://api.vrchat.cloud/api/1/file/" + avatar.id);
             }), "Clone Avatar");
+
+            /*var CloneAvatarButton2 = new QMSingleButton("/UserInterface/MenuContent/Screens/Social", 0, 0, "Download VRCA", new Action(() =>
+            {
+                Console.WriteLine("Downloading Avatar...");
+                var avatar = CustomList.AList.avatarPedestal.field_Internal_ApiAvatar_0;
+                Process.Start("https://api.vrchat.cloud/api/1/avatars/" + avatar.id);
+            }), "Clone Avatar");*/
 
             if (Input.GetKeyDown(KeyCode.F))
             {

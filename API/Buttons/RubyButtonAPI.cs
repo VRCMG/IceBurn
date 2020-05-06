@@ -65,7 +65,6 @@ namespace IceBurn.API
             initButton(btnXLocation, btnYLocation, btnText, btnAction, btnToolTip, btnBackgroundColor, btnTextColor);
         }
 
-
         private void initButton(int btnXLocation, int btnYLocation, String btnText, UnityAction btnAction, String btnToolTip, Nullable<Color> btnBackgroundColor = null, Nullable<Color> btnTextColor = null)
         {
             Transform btnTemplate = null;
